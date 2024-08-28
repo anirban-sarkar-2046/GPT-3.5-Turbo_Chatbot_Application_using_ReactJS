@@ -175,7 +175,7 @@ function LoginPage({ onLogin }) {
     }
 
     if (!isValidPassword(password)) {
-      handleShowAlert("Invalid Password", "Password must be at least 6 characters long and contain at least one letter and one number.");
+      handleShowAlert("Invalid Password Format", "Password must be at least 6 characters long and contain at least one letter and one number.");
       return;
     }
 
