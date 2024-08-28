@@ -37,7 +37,7 @@ const CreditCard = () => {
     }
 
     if (!/^[A-Z][a-z]*(?: [A-Z][a-z]*)*$/.test(cardHolder)) {
-      setModalTitle("Invalid Name");
+      setModalTitle("Invalid Name Format");
       setModalMessage(
         "Card holder name must be letters only with the first letter of each word capitalized."
       );
