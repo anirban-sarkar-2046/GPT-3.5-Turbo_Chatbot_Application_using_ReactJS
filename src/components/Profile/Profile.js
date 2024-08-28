@@ -8,14 +8,13 @@ const Profile = () => {
     const [showModal, setShowModal] = useState(false);
     const [profileData, setProfileData] = useState({
         fullName: "Anirban Sarkar",
-        dobDay: "29",
-        dobMonth: "11",
+        dobDay: "1",
+        dobMonth: "1",
         dobYear: "2003",
         gender: "Male",
-        username: "Anirban2046",
-        email: "anirbansarkar2046@gmail.com",
-        mobile: "1311-682731",
-        countryCode: "+880",
+        username: "something",
+        email: "something@gmail.com",
+        mobile: "+880 ****-******",
         institution: "Rajshahi University of Engineering and Technology",
         address: "Rajshahi",
         bio: "Engineering undergrad on a mission to decode the digital universe! | Passionate about algorithms, data structures, and everything tech! | Always up for a challenge & ready to hack away at problems! | Join me on this journey of innovation and exploration!",
@@ -54,10 +53,6 @@ const Profile = () => {
 
     const handleMobileChange = (e) => {
         setTempProfileData({ ...tempProfileData, mobile: e.target.value });
-    };
-
-    const handleCountryCodeChange = (e) => {
-        setTempProfileData({ ...tempProfileData, countryCode: e.target.value });
     };
 
     return (
@@ -179,49 +174,7 @@ const Profile = () => {
                                         <div className="col-sm-3">
                                             <h6 className="mb-0">Mobile</h6>
                                         </div>
-                                        <div className="col-sm-3">
-                                            <select 
-                                                value={tempProfileData.countryCode} 
-                                                onChange={handleCountryCodeChange} 
-                                                className="form-control"
-                                            >
-                                                <option className="country-option" value="+1">+1</option>
-                                                <option className="country-option" value="+44">+44</option>
-                                                <option className="country-option" value="+91">+91</option>
-                                                <option className="country-option" value="+880">+880</option>
-                                                <option className="country-option" value="+86">+86</option>
-                                                <option className="country-option" value="+81">+81</option>
-                                                <option className="country-option" value="+33">+33</option>
-                                                <option className="country-option" value="+49">+49</option>
-                                                <option className="country-option" value="+61">+61</option>
-                                                <option className="country-option" value="+55">+55</option>
-                                                <option className="country-option" value="+7">+7</option>
-                                                <option className="country-option" value="+34">+34</option>
-                                                <option className="country-option" value="+27">+27</option>
-                                                <option className="country-option" value="+82">+82</option>
-                                                <option className="country-option" value="+65">+65</option>
-                                                <option className="country-option" value="+92">+92</option>
-                                                <option className="country-option" value="+234">+234</option>
-                                                <option className="country-option" value="+973">+973</option>
-                                                <option className="country-option" value="+966">+966</option>
-                                                <option className="country-option" value="+20">+20</option>
-                                                <option className="country-option" value="+358">+358</option>
-                                                <option className="country-option" value="+39">+39</option>
-                                                <option className="country-option" value="+54">+54</option>
-                                                <option className="country-option" value="+48">+48</option>
-                                                <option className="country-option" value="+31">+31</option>
-                                                <option className="country-option" value="+60">+60</option>
-                                                <option className="country-option" value="+354">+354</option>
-                                                <option className="country-option" value="+375">+375</option>
-                                                <option className="country-option" value="+231">+231</option>
-                                                <option className="country-option" value="+43">+43</option>
-                                                <option className="country-option" value="+421">+421</option>
-                                                <option className="country-option" value="+372">+372</option>
-
-                                                {/* Add more country codes as needed */}
-                                            </select>
-                                        </div>
-                                        <div className="col-sm-6">
+                                        <div className="col-sm-9">
                                             <input
                                                 type="text"
                                                 value={tempProfileData.mobile}
@@ -358,7 +311,7 @@ const Profile = () => {
                                             <h6 className="mb-0">Mobile</h6>
                                         </div>
                                         <div className="col-sm-9 text-secondary">
-                                            {profileData.countryCode} {profileData.mobile}
+                                            {profileData.mobile}
                                         </div>
                                     </div>
                                     <hr />
