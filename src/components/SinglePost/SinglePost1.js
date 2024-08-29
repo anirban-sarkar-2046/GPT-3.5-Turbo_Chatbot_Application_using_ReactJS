@@ -24,10 +24,6 @@ export default function SinglePost1() {
         />
         <h1 className="singlePostTitle">
         Large language models don’t behave like people
-          {/* <div className="singlePostEdit">
-            <i className="singlePostIcon far fa-edit"></i>
-            <i className="singlePostIcon far fa-trash-alt"></i>
-          </div> */}
         </h1>
         <h6 className="singlePostWriter">
             By Adam Zewe <br/> Published on: 23/07/2023, MIT News

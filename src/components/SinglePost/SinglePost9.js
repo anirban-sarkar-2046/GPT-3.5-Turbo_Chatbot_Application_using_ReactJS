@@ -26,7 +26,7 @@ export default function SinglePost2() {
         Reddit-OpenAI deal: ChatGPT gets access to social media platform
         </h1>
         <h6 className="singlePostWriter">
-        João da Silva <br/> Published on: 17/05/2024, BBC
+            By João da Silva <br/> Published on: 17/05/2024, BBC
         </h6>
         <br/>
         <p className="singlePostDesc">
