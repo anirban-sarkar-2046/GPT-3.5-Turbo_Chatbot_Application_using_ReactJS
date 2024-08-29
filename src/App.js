@@ -4,6 +4,7 @@ import About from "./components/About/About";
 import Blog from "./components/Blog/Blog";
 import Subscription from "./components/Subscription/Subscription";
 import Profile from "./components/Profile/Profile";
+import ChatHistory from "./components/ChatHistory/ChatHistory";
 import CreditCard from "./components/CreditCard/CreditCard";
 import FAQ from "./components/FAQ/FAQ";
 import userIcon from './user-icon.jpg';
@@ -13,12 +14,13 @@ import user_icon from './person.png';
 import email_icon from './email.png';
 import password_icon from './password.png'
 import { sendMsgToOpenAI } from './openai';
-import { useEffect, useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
+  useLocation,
   Link
 } from "react-router-dom";
 import SinglePost1 from "./components/SinglePost/SinglePost1";
@@ -41,6 +43,7 @@ function App() {
           <Route path="/blog" element={<Blog/>} />
           <Route path="/subscription" element={<Subscription />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/chathistory" element={<ChatHistory />} />
           <Route path="/subscription/creditcard" element={<CreditCard />} />
           <Route path="/about/faq" element={<FAQ />} />
           <Route path="/" element={<Home />} />
@@ -60,41 +63,58 @@ function App() {
 
 function Home() {
   const msgEnd = useRef(null);
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const messageIndex = query.get('message');
 
-  const [input, setInput] = useState("");
-  const [messages, setMessages] = useState([
-    {
-      text: "Hello! How can I assist you today?",
-      isBot: true,
-    }
-  ]);
+  const [input, setInput] = useState(() => sessionStorage.getItem('input') || "");
+  const [messages, setMessages] = useState(() => {
+    const savedMessages = sessionStorage.getItem('messages');
+    return savedMessages ? JSON.parse(savedMessages) : [{ text: "Hello! How can I assist you today?", isBot: true }];
+  });
 
   useEffect(() => {
-    msgEnd.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+    // Scroll to the specified message if messageIndex is provided
+    if (messageIndex !== null) {
+      const targetMessage = document.getElementById(`message-${messageIndex}`);
+      if (targetMessage) {
+        targetMessage.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Scroll to the end of the chat if no messageIndex is provided
+      msgEnd.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messageIndex, messages]);
 
   const handleSend = async () => {
     const userMessage = input;
     setInput('');
 
-    setMessages(prevMessages => [
-      ...prevMessages,
+    const updatedMessages = [
+      ...messages,
       { text: userMessage, isBot: false }
-    ]);
+    ];
+    setMessages(updatedMessages);
+    sessionStorage.setItem('messages', JSON.stringify(updatedMessages));
+    sessionStorage.setItem('input', '');
 
     try {
       const botResponse = await sendMsgToOpenAI(userMessage);
 
-      setMessages(prevMessages => [
-        ...prevMessages,
+      const newMessages = [
+        ...updatedMessages,
         { text: botResponse, isBot: true }
-      ]);
+      ];
+      setMessages(newMessages);
+      sessionStorage.setItem('messages', JSON.stringify(newMessages));
     } catch (error) {
       console.error("Error fetching OpenAI response:", error);
-      setMessages(prevMessages => [
-        ...prevMessages,
+      const errorMessages = [
+        ...updatedMessages,
         { text: "Sorry, something went wrong.", isBot: true }
-      ]);
+      ];
+      setMessages(errorMessages);
+      sessionStorage.setItem('messages', JSON.stringify(errorMessages));
     }
   };
 
@@ -102,12 +122,16 @@ function Home() {
     if (e.key === 'Enter') await handleSend();
   };
 
+  useEffect(() => {
+    sessionStorage.setItem('input', input);
+  }, [input]);
+
   return (
     <div className="App">
       <div className="main">
         <div className="chats">
           {messages.map((message, i) => (
-            <div key={i} className={message.isBot ? "chatMessages bot" : "chatMessages"}>
+            <div key={i} id={`message-${i}`} className={message.isBot ? "chatMessages bot" : "chatMessages"}>
               <img className='chatimg' src={message.isBot ? gptImgLogo : userIcon} alt="" />
               <p className="txt"> {message.text} </p>
             </div>
@@ -193,6 +217,9 @@ function LoginPage({ onLogin }) {
     setRegisteredPassword(password);
     setRegisteredEmail(email);
     setIsRegistered(true);
+
+    handleShowAlert("Registration Successful", "Your account has been created.");
+
     setUsername('');
     setPassword('');
     setEmail('');

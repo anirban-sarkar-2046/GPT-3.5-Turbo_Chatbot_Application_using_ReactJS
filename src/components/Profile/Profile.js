@@ -1,26 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ProfileContext } from './ProfileContext';
 import './Profile.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ModalAlert from "./ModalAlertProfile";
 
 const Profile = () => {
+    const { profileData, setProfileData } = useContext(ProfileContext);
     const [isEditing, setIsEditing] = useState(false);
     const [showModal, setShowModal] = useState(false);
-    const [profileData, setProfileData] = useState({
-        fullName: "Anirban Sarkar",
-        dobDay: "1",
-        dobMonth: "1",
-        dobYear: "2003",
-        gender: "Male",
-        username: "something",
-        email: "something@gmail.com",
-        mobile: "+880 ****-******",
-        institution: "Rajshahi University of Engineering and Technology",
-        address: "Rajshahi",
-        bio: "Engineering undergrad on a mission to decode the digital universe! | Passionate about algorithms, data structures, and everything tech! | Always up for a challenge & ready to hack away at problems! | Join me on this journey of innovation and exploration!",
-        profilePicture: "https://bootdey.com/img/Content/avatar/avatar5.png",
-    });
-
     const [tempProfileData, setTempProfileData] = useState(profileData);
 
     const handleProfilePictureChange = (event) => {

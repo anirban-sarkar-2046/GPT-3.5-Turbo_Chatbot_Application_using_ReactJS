@@ -17,7 +17,7 @@ const Subscription = () => {
                 <div class="deals">
                     <h4>&nbsp; &nbsp; &nbsp;- Unlimited messages</h4>
                     <h4>&nbsp; &nbsp; &nbsp;- Browsing</h4>
-                    <h4>&nbsp; &nbsp; &nbsp;- Access on web, iOS, Android</h4>
+                    <h4>&nbsp; &nbsp; &nbsp;- Access across platforms</h4>
                     <h4>&nbsp; &nbsp; &nbsp;- 8K context window</h4> 
                     <h4>&nbsp; &nbsp; &nbsp;- Regular quality updates</h4>
                 </div>
@@ -46,7 +46,7 @@ const Subscription = () => {
                     <h4>&nbsp; &nbsp; &nbsp;- Dedicated workspace</h4>
                     <h4>&nbsp; &nbsp; &nbsp;- Unified billing</h4>
                     <h4>&nbsp; &nbsp; &nbsp;- Admin console</h4>
-                    <h4>&nbsp; &nbsp; &nbsp;- Bulk member management</h4>
+                    <h4>&nbsp; &nbsp; &nbsp;- Bulk management</h4>
                     <h4>&nbsp; &nbsp; &nbsp;- Admin roles</h4>
                 </div>
                 <Link to="/subscription/creditcard">buy now</Link>

@@ -21,7 +21,7 @@
 
 .mobile-menus{
     background-color: rgba(128, 128, 128, 0.242);
-    height: 14rem;
+    height: 15.5rem;
     display: grid;
     grid-column: 2/5;
     align-items: start;
@@ -57,7 +57,7 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 2000px) {
+@media screen and (max-width: 500000px) {
     .hamburger{
         display: none;
     }
@@ -72,6 +72,10 @@
         grid-template-columns: 1fr;
         height: 4rem;
         grid-template-columns: 2rem 2fr 3fr 2rem 2rem;
+
+        .mobile-menu-link{
+            display: none;
+        }
     }
 }
 
@@ -86,26 +90,8 @@
 
     .hamburger-menu{
         font-size: 2rem;
-    } 
+    }
 }
-
-    /* .menu-link {
-        display: none;
-        /* grid-column: 2/4;
-        justify-content: center;
-        position: relative;
-        z-index: 99; */
-    /* } */
-    
-
-/* .logo{
-    font-size: 30px;
-    display: grid;
-    grid-column: 2/3;
-    justify-content: start;
-    display:flex;
-    align-items: start;
-} */
 
 .menu-link{
     grid-column: 1/3;

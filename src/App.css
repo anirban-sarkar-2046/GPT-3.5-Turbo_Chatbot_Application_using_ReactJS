@@ -98,7 +98,6 @@ body{
   display: flex;
   right: 0;
   flex-direction: column;
-  max-width: 100rem;
   height: calc(100vh - 17rem);
 }
 
