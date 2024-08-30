@@ -37,7 +37,7 @@ export default function SinglePost2() {
           <br />
           <br />
           <br />
-          Can ChatGPT accurately answer questions from urology patients?
+          <span style={{ fontWeight: 'bold' }}>Can ChatGPT accurately answer questions from urology patients?</span>
           <br />
           <br />
           ChatGPT is an innovative large language model (LLM) that has sparked interest across a wide range of settings, including health and medicine. In some recent studies, ChatGPT has performed well in responding to various types of medical questions, although its performance in urology is less well-established.
@@ -47,7 +47,7 @@ export default function SinglePost2() {
           <br />
           <br />
           <br />
-          Findings support 'generative AI technology to improve clinical efficiency'
+          <span style={{ fontWeight: 'bold' }}>Findings support 'generative AI technology to improve clinical efficiency'</span>
           <br />
           <br />
           The ChatGPT-generated responses were judged to be accurate, with an average score of 4.0 on a five-point scale; and intelligible, average score 4.7. Ratings of completeness and helpfulness were lower, but with little or no potential for harm. Scores were comparable for different types of question content (symptoms, postoperative concerns, etc.).

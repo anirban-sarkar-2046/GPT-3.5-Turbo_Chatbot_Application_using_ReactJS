@@ -33,12 +33,12 @@ export default function SinglePost6() {
         In several sessions on AI tools at the 2024 NICAR data journalism conference, data experts grappled with the broader question: “Why should journalists use AI?”
         During the week of the summit, Bloomberg published an investigation by two NICAR attendees that illustrates some of the problems with LLMs, showing that ChatGPT assigned lower rankings to identical work resumes featuring applicant names typically associated with minority groups.
         Jon Keegan, an investigative data reporter at The Markup, said reporters and editors need to be systematic in their approach to AI to benefit from its efficiencies and avoid its many accuracy, bias, and ethics pitfalls, including several basic steps.
-          <br />
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;1. First, learn how LLMs learn and operate. Start by reading this piece by the Financial Times, which, Keegan said, “is the absolute best visual explainer of how LLMs work.”
-          <br />
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;2. Adopt and communicate a newsroom AI use policy. GIJN has joined with other leading news organizations in the Paris Charter on AI and Journalism to create a set of best practices for investigative newsrooms. For editors who have not yet defined their own guardrails, Keegan suggested they read the Guardian’s policy, which states that it will use it “only where it contributes to the creation and distribution of original journalism” — or the frank and detailed policy offered by Wired magazine.
+            <br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;1. First, learn how LLMs learn and operate. Start by reading this piece by the Financial Times, which, Keegan said, “is the absolute best visual explainer of how LLMs work.”
+            <br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;2. Adopt and communicate a newsroom AI use policy. GIJN has joined with other leading news organizations in the Paris Charter on AI and Journalism to create a set of best practices for investigative newsrooms. For editors who have not yet defined their own guardrails, Keegan suggested they read the Guardian’s policy, which states that it will use it “only where it contributes to the creation and distribution of original journalism” — or the frank and detailed policy offered by Wired magazine.
             <br />
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;3. Cut through the confusion about the many new AI tools released each week by checking regularly with technical expert sources. He recommended following the Simon Willison Weblog — that offers explainers, how-tos, and warnings — “and find a human source to keep up with some of the new developments because they’re happening so fast.” Reporters can also follow the What’s New blog at Journalist’s Toolbox AI, which lists recent releases of journalism-relevant AI tools and resources.
@@ -88,7 +88,7 @@ export default function SinglePost6() {
             <br />
             <br />
             <br />
-            Rolli Information Tracer and Rolliapp:
+            <span style={{ fontWeight: 'bold' }}>Rolli Information Tracer and Rolliapp:</span>
             <br />
             <br />
             Created for journalists, by journalists, Rolli tools use AI technology to solve key reporting challenges while keeping project data secure.
@@ -100,7 +100,7 @@ export default function SinglePost6() {
             <br />
             <br />
             <br />
-            GPT Excel:
+            <span style={{ fontWeight: 'bold' }}>GPT Excel:</span>
             <br />
             <br />
             “This tool is there to help you write Excel formulas,” Hargarten explained. “It spits out some of the most complex formulas that I’ve ever used, that would take me hours to write if I tried to do it myself. I like it because it’s simple, and doesn’t require as much prompting. It’s got settings for Airtable and Google Sheets as well.” He added: “It bypasses a lot of the extremely irritating troubleshooting that would otherwise slow down an in-depth enterprise investigation.”
@@ -108,7 +108,7 @@ export default function SinglePost6() {
             <br />
             <br />
             <br />
-            ChatGPT or Claude — or whichever LLM proves better for the input task:
+            <span style={{ fontWeight: 'bold' }}>ChatGPT or Claude — or whichever LLM proves better for the input task:</span>
             <br />
             <br />
             “Whenever I use LLMs with my data students, I’ll have them use three and pit them against each other to see which one is the best for that task,” Reilley explained.
@@ -117,7 +117,7 @@ export default function SinglePost6() {
             <br />
             <br />
             <br />
-            Perplexity:
+            <span style={{ fontWeight: 'bold' }}>Perplexity:</span>
             <br />
             <br />
             This new chat interface impressed several experienced investigative journalists at NICAR 2024 as an excellent briefing tool for complicated or unfamiliar subjects. While not a direct source of verified data, it provides concise and mostly reliable responses to complex investigative questions, as well as curated lists of authoritative sources and useful suggested follow-up questions. In contrast to some other AI tools, it tends to take you where you want to go, rather than where it wants to take you, according to its early users.
@@ -127,7 +127,7 @@ export default function SinglePost6() {
             <br />
             <br />
             <br />
-            Llamafile — a ‘Local AI’ for Your Laptop:
+            <span style={{ fontWeight: 'bold' }}>Llamafile — a ‘Local AI’ for Your Laptop:</span>
             <br />
             <br />
             One major concern about commercial LLM chatbots is uncertainty about the security of source data with these cloud-based services, and another is the lack of personal control.
@@ -140,7 +140,7 @@ export default function SinglePost6() {
             <br />
             <br />
             <br />
-            The Commons Project (US-only) — an Example of Journalist-Made AI Tools:
+            <span style={{ fontWeight: 'bold' }}>The Commons Project (US-only) — an Example of Journalist-Made AI Tools:</span>
             <br />
             <br />
             While limited to the US, the new Commons Project tool shows how data journalists in most countries can use AI chat interfaces to build their own data tools to parse large government websites. In this case, journalists built an AI tool to dig into the vast US archive of what citizens have stated about government regulations. It was built in a collaboration between the Columbia University Graduate School of Journalism and Stanford’s School of Engineering.
