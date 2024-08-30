@@ -74,14 +74,12 @@ function Home() {
   });
 
   useEffect(() => {
-    // Scroll to the specified message if messageIndex is provided
     if (messageIndex !== null) {
       const targetMessage = document.getElementById(`message-${messageIndex}`);
       if (targetMessage) {
         targetMessage.scrollIntoView({ behavior: "smooth" });
       }
     } else {
-      // Scroll to the end of the chat if no messageIndex is provided
       msgEnd.current?.scrollIntoView({ behavior: "smooth" });
     }
   }, [messageIndex, messages]);
