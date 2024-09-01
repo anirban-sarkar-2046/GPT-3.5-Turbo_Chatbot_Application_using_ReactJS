@@ -5,9 +5,9 @@ export const ProfileContext = createContext();
 export const ProfileProvider = ({ children }) => {
     const [profileData, setProfileData] = useState({
         fullName: "Anirban Sarkar",
-        dobDay: "29",
-        dobMonth: "11",
-        dobYear: "2003",
+        dobDay: "01",
+        dobMonth: "01",
+        dobYear: "2004",
         gender: "Male",
         username: "Anirban2046",
         email: "sarkar.anirban@gmail.com",
