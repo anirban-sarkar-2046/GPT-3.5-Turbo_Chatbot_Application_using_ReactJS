@@ -57,7 +57,7 @@ const CreditCard = () => {
     setModalShow(true);
 
     setTimeout(() => {
-      navigate("/");
+      navigate("/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS");
     }, 2000);
   };
 
