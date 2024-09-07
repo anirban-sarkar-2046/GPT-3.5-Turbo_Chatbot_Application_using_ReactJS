@@ -46,7 +46,7 @@ function App() {
           <Route path="/chathistory" element={<ChatHistory />} />
           <Route path="/subscription/creditcard" element={<CreditCard />} />
           <Route path="/about/faq" element={<FAQ />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS" element={<Home />} />
           <Route path="/blog/singlepost1" element={<SinglePost1 />} />
           <Route path="/blog/singlepost2" element={<SinglePost2 />} />
           <Route path="/blog/singlepost3" element={<SinglePost3 />} />

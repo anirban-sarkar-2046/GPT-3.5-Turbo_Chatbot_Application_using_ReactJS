@@ -19,7 +19,7 @@ const Navbar = () => {
                     <div className="mobile-menus">
                     <ul>
                         <li>
-                            <Link to="/" onClick={() => setShowMediaIcons(!showMediaIcons)}>Home</Link>
+                            <Link to="/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS" onClick={() => setShowMediaIcons(!showMediaIcons)}>Home</Link>
                         </li>
                         <li>
                             <Link to="/chathistory" onClick={() => setShowMediaIcons(!showMediaIcons)}>Chats</Link>
@@ -48,7 +48,7 @@ const Navbar = () => {
                 <div className="menu-link">
                     <ul>
                         <li>
-                            <Link to="/">Home</Link>
+                            <Link to="/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS">Home</Link>
                         </li>
                         <li>
                             <Link to="/chathistory">Chats</Link>
