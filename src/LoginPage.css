@@ -1,0 +1,151 @@
+.containerapp{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 120px;
+    background-color: #1e1f21;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 600px;
+  }
+  
+  .headerapp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+  }
+  
+  .textapp{
+    color: grey;
+    font-size: 48px;
+    font-weight: 700;
+    background-color: #1e1f21;
+  }
+  
+  .underline{
+    width: 61px;
+    height: 6px;
+    background: white;
+    border-radius: 9px;
+  }
+  
+  .inputs{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .input{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 470px;
+    height: 80px;
+    background-color: #1e1f21;
+    border-radius: 6px;
+  }
+  
+  .input img{
+    margin: 0px 10px;
+  }
+  
+  .input input{
+    height: 50px;
+    width: 400px;
+    outline: none;
+    color: #797979;
+    font-size: 19px;
+  }
+  
+  .forgot-password{
+    padding-left: 62px;
+    margin-top: 27px;
+    color: #797979;
+    font-size: 18px;
+    display: flex;
+    margin-left: 125px;
+  }
+  
+  .forgot-password span{
+    color: #4c00b4;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .submit-container{
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 30px auto;
+  }
+  
+  .submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 59px;
+    color: #fff;
+    background: rgba(128, 128, 128, 0.63);
+    border-radius: 50px;
+    font-size: 19px;
+    cursor: pointer;
+  }
+  
+  .gray{
+    background: rgba(62, 61, 61, 0.646);
+  }
+  
+  .sub-button{
+    width: 250px;
+    height: 45px;
+    background: linear-gradient(45deg, rgba(128, 128, 128, 0.116), grey);
+    border: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    font-weight: 700;
+    margin: 0 auto;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .containerapp .register-link{
+    font-size: 14.5;
+    text-align: center;
+    margin: 20px 0 15px;
+  }
+  
+  .register-link p a{
+    color: #fff;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+  
+  .register-link p a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  
+  .custom-modal .modal-content {
+    background-color: #1e1f21;
+    color: #fff;
+    border: none;
+  }
+  
+  .custom-modal .modal-header, 
+  .custom-modal .modal-footer {
+    border: none;
+  }
+  
+  .custom-modal .modal-body {
+    padding-top: 0;
+  }

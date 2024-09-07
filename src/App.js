@@ -1,4 +1,5 @@
 import './App.css';
+import LoginPage from './LoginPage';
 import Navbar from './components/Navbar/Navbar';
 import About from "./components/About/About";
 import Blog from "./components/Blog/Blog";
@@ -10,9 +11,6 @@ import FAQ from "./components/FAQ/FAQ";
 import userIcon from './user-icon.jpg';
 import gptImgLogo from './chatgptLogo.jpg';
 import sendBtn from './send.svg';
-import user_icon from './person.png';
-import email_icon from './email.png';
-import password_icon from './password.png'
 import { sendMsgToOpenAI } from './openai';
 import React, { useState, useEffect, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -21,8 +19,10 @@ import {
   Routes,
   Route,
   useLocation,
+  Navigate,
   Link
 } from "react-router-dom";
+import { auth } from './firebase';
 import SinglePost1 from "./components/SinglePost/SinglePost1";
 import SinglePost2 from "./components/SinglePost/SinglePost2";
 import SinglePost3 from "./components/SinglePost/SinglePost3";
@@ -32,30 +32,47 @@ import SinglePost6 from "./components/SinglePost/SinglePost6";
 import SinglePost7 from "./components/SinglePost/SinglePost7";
 import SinglePost8 from "./components/SinglePost/SinglePost8";
 import SinglePost9 from "./components/SinglePost/SinglePost9";
-import ModalAlertApp from './ModalAlertApp';
 
 function App() {  
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setIsLoggedIn(!!user);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const PrivateRoute = ({ element }) => {
+    return isLoggedIn ? element : <Navigate to="/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS" />;
+  };
+
+  const showNavbar = isLoggedIn && location.pathname !== '/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS';
+  
   return (
     <>
-    <Navbar />
-    <Routes>
-          <Route path="/about" element={<About />} />
-          <Route path="/blog" element={<Blog/>} />
-          <Route path="/subscription" element={<Subscription />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/chathistory" element={<ChatHistory />} />
-          <Route path="/subscription/creditcard" element={<CreditCard />} />
-          <Route path="/about/faq" element={<FAQ />} />
-          <Route path="/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS" element={<Home />} />
-          <Route path="/blog/singlepost1" element={<SinglePost1 />} />
-          <Route path="/blog/singlepost2" element={<SinglePost2 />} />
-          <Route path="/blog/singlepost3" element={<SinglePost3 />} />
-          <Route path="/blog/singlepost4" element={<SinglePost4 />} />
-          <Route path="/blog/singlepost5" element={<SinglePost5 />} />
-          <Route path="/blog/singlepost6" element={<SinglePost6 />} />
-          <Route path="/blog/singlepost7" element={<SinglePost7 />} />
-          <Route path="/blog/singlepost8" element={<SinglePost8 />} />
-          <Route path="/blog/singlepost9" element={<SinglePost9 />} />
+      {showNavbar && <Navbar />}
+      <Routes>
+        <Route path="/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS" element={<LoginPage />} />
+        <Route path="/about" element={<PrivateRoute element={<About />} />} />
+        <Route path="/blog" element={<PrivateRoute element={<Blog />} />} />
+        <Route path="/subscription" element={<PrivateRoute element={<Subscription />} />} />
+        <Route path="/profile" element={<PrivateRoute element={<Profile />} />} />
+        <Route path="/chathistory" element={<PrivateRoute element={<ChatHistory />} />} />
+        <Route path="/subscription/creditcard" element={<PrivateRoute element={<CreditCard />} />} />
+        <Route path="/about/faq" element={<PrivateRoute element={<FAQ />} />} />
+        <Route path="/" element={<PrivateRoute element={<Home />} />} />
+        <Route path="/blog/singlepost1" element={<PrivateRoute element={<SinglePost1 />} />} />
+        <Route path="/blog/singlepost2" element={<PrivateRoute element={<SinglePost2 />} />} />
+        <Route path="/blog/singlepost3" element={<PrivateRoute element={<SinglePost3 />} />} />
+        <Route path="/blog/singlepost4" element={<PrivateRoute element={<SinglePost4 />} />} />
+        <Route path="/blog/singlepost5" element={<PrivateRoute element={<SinglePost5 />} />} />
+        <Route path="/blog/singlepost6" element={<PrivateRoute element={<SinglePost6 />} />} />
+        <Route path="/blog/singlepost7" element={<PrivateRoute element={<SinglePost7 />} />} />
+        <Route path="/blog/singlepost8" element={<PrivateRoute element={<SinglePost8 />} />} />
+        <Route path="/blog/singlepost9" element={<PrivateRoute element={<SinglePost9 />} />} />
+        <Route path="*" element={<Navigate to="/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS" />} />
       </Routes>
     </>
   );
@@ -156,216 +173,216 @@ function Home() {
 }
 
 
-function LoginPage({ onLogin }) {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [registeredUsername, setRegisteredUsername] = useState('');
-  const [registeredPassword, setRegisteredPassword] = useState('');
-  const [registeredEmail, setRegisteredEmail] = useState('');
-  const [isRegistered, setIsRegistered] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoginPage, setIsLoginPage] = useState(true);
-  const [showPassword, setShowPassword] = useState(false);
+// function LoginPage({ onLogin }) {
+//   const [username, setUsername] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [registeredUsername, setRegisteredUsername] = useState('');
+//   const [registeredPassword, setRegisteredPassword] = useState('');
+//   const [registeredEmail, setRegisteredEmail] = useState('');
+//   const [isRegistered, setIsRegistered] = useState(false);
+//   const [isLoggedIn, setIsLoggedIn] = useState(false);
+//   const [isLoginPage, setIsLoginPage] = useState(true);
+//   const [showPassword, setShowPassword] = useState(false);
 
-  const [showAlert, setShowAlert] = useState(false);
-  const [alertTitle, setAlertTitle] = useState('');
-  const [alertMessage, setAlertMessage] = useState('');
+  // const [showAlert, setShowAlert] = useState(false);
+  // const [alertTitle, setAlertTitle] = useState('');
+  // const [alertMessage, setAlertMessage] = useState('');
 
-  const handleShowAlert = (title, message) => {
-    setAlertTitle(title);
-    setAlertMessage(message);
-    setShowAlert(true);
-  }
+  // const handleShowAlert = (title, message) => {
+  //   setAlertTitle(title);
+  //   setAlertMessage(message);
+  //   setShowAlert(true);
+  // }
 
-  const handleCloseAlert = () => setShowAlert(false);
+  // const handleCloseAlert = () => setShowAlert(false);
 
-  const isValidEmail = (email) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
+  // const isValidEmail = (email) => {
+  //   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  // };
 
-  const isValidPassword = (password) => {
-    return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/.test(password);
-  };
+  // const isValidPassword = (password) => {
+  //   return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/.test(password);
+  // };
 
-  const handleRegister = (e) => {
-    e.preventDefault();
+  // const handleRegister = (e) => {
+  //   e.preventDefault();
 
-    if (!isValidEmail(email)) {
-      handleShowAlert("Invalid Email", "Please enter a valid email address.");
-      return;
-    }
+  //   if (!isValidEmail(email)) {
+  //     handleShowAlert("Invalid Email", "Please enter a valid email address.");
+  //     return;
+  //   }
 
-    if (!isValidPassword(password)) {
-      handleShowAlert("Invalid Password Format", "Password must be at least 6 characters long and contain at least one letter and one number.");
-      return;
-    }
+  //   if (!isValidPassword(password)) {
+  //     handleShowAlert("Invalid Password Format", "Password must be at least 6 characters long and contain at least one letter and one number.");
+  //     return;
+  //   }
 
-    if (username.trim() === "") {
-      handleShowAlert("Empty Username", "Username cannot be empty.");
-      return;
-    }
+  //   if (username.trim() === "") {
+  //     handleShowAlert("Empty Username", "Username cannot be empty.");
+  //     return;
+  //   }
 
-    if (username.trim().length < 6) {
-      handleShowAlert("Short Username", "Username must be at least 6 characters long.");
-      return;
-    }
+  //   if (username.trim().length < 6) {
+  //     handleShowAlert("Short Username", "Username must be at least 6 characters long.");
+  //     return;
+  //   }
 
-    setRegisteredUsername(username);
-    setRegisteredPassword(password);
-    setRegisteredEmail(email);
-    setIsRegistered(true);
+  //   setRegisteredUsername(username);
+  //   setRegisteredPassword(password);
+  //   setRegisteredEmail(email);
+  //   setIsRegistered(true);
 
-    handleShowAlert("Registration Successful", "Your account has been created.");
+  //   handleShowAlert("Registration Successful", "Your account has been created.");
 
-    setUsername('');
-    setPassword('');
-    setEmail('');
-    setIsLoginPage(true);
-  };
+  //   setUsername('');
+  //   setPassword('');
+  //   setEmail('');
+  //   setIsLoginPage(true);
+  // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (username === registeredUsername && password === registeredPassword) {
-      onLogin();
-    } else {
-      handleShowAlert("Invalid credentials");
-      return;
-    }
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (username === registeredUsername && password === registeredPassword) {
+  //     onLogin();
+  //   } else {
+  //     handleShowAlert("Invalid credentials");
+  //     return;
+  //   }
+  // };
 
-  const showRegisterPage = (e) => {
-    e.preventDefault();
-    setIsLoginPage(false);
-    setUsername('');
-    setPassword('');
-    setEmail('');
-  };
+//   const showRegisterPage = (e) => {
+//     e.preventDefault();
+//     setIsLoginPage(false);
+//     setUsername('');
+//     setPassword('');
+//     setEmail('');
+//   };
 
-  const showLoginPage = (e) => {
-    e.preventDefault();
-    setIsLoginPage(true);
-    setUsername('');
-    setPassword('');
-    setEmail('');
-  };
+//   const showLoginPage = (e) => {
+//     e.preventDefault();
+//     setIsLoginPage(true);
+//     setUsername('');
+//     setPassword('');
+//     setEmail('');
+//   };
 
-  return (
-    <div className='containerapp'>
-      {isLoginPage && (
-        <form onSubmit={handleSubmit}>
-          <div className="headerapp">
-            <div className="textapp">Login</div>
-          </div>
-          <div className="inputs">
-            <div className="input">
-              <img src={user_icon} alt="" />
-              <input
-                type="text"
-                placeholder="Username"
-                required
-                value={username}
-                onChange={e => setUsername(e.target.value)}
-              />
-            </div>
-            <div className="input">
-              <img src={password_icon} alt="" />
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                required
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-              />
-              <i
-                className={`fas fa-eye${showPassword ? '' : '-slash'}`}
-                style={{
-                  marginLeft: '8px',
-                  cursor: 'pointer',
-                  color: 'grey'
-                }}
-                onClick={() => setShowPassword(!showPassword)}
-              />
-            </div>
-          </div>
-          <button className="sub-button" type="submit">Login</button>
-          <div className="register-link">
-            <p>Don't have an account? <a href onClick={showRegisterPage}>Register</a></p>
-          </div>
-        </form>
-      )}
+//   return (
+//     <div className='containerapp'>
+//       {isLoginPage && (
+//         <form onSubmit={handleSubmit}>
+//           <div className="headerapp">
+//             <div className="textapp">Login</div>
+//           </div>
+//           <div className="inputs">
+//             <div className="input">
+//               <img src={user_icon} alt="" />
+//               <input
+//                 type="text"
+//                 placeholder="Username"
+//                 required
+//                 value={username}
+//                 onChange={e => setUsername(e.target.value)}
+//               />
+//             </div>
+//             <div className="input">
+//               <img src={password_icon} alt="" />
+//               <input
+//                 type={showPassword ? "text" : "password"}
+//                 placeholder="Password"
+//                 required
+//                 value={password}
+//                 onChange={e => setPassword(e.target.value)}
+//               />
+//               <i
+//                 className={`fas fa-eye${showPassword ? '' : '-slash'}`}
+//                 style={{
+//                   marginLeft: '8px',
+//                   cursor: 'pointer',
+//                   color: 'grey'
+//                 }}
+//                 onClick={() => setShowPassword(!showPassword)}
+//               />
+//             </div>
+//           </div>
+//           <button className="sub-button" type="submit">Login</button>
+//           <div className="register-link">
+//             <p>Don't have an account? <a href onClick={showRegisterPage}>Register</a></p>
+//           </div>
+//         </form>
+//       )}
       
-      {!isLoginPage && !isLoggedIn && (
-        <form onSubmit={handleRegister}>
-          <div className="headerapp">
-            <div className="textapp">Register</div>
-          </div>
-          <div className="inputs">
-            <div className="input">
-              <img src={email_icon} alt="" />
-              <input
-                type="email"
-                placeholder="E-mail"
-                required
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="input">
-              <img src={user_icon} alt="" />
-              <input
-                type="text"
-                placeholder="Username"
-                required
-                value={username}
-                onChange={e => setUsername(e.target.value)}
-              />
-            </div>
-            <div className="input">
-              <img src={password_icon} alt="" />
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                required
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-              />
-              <i
-                className={`fas fa-eye${showPassword ? '' : '-slash'}`}
-                style={{
-                  marginLeft: '8px',
-                  cursor: 'pointer',
-                  color: 'grey'
-                }}
-                onClick={() => setShowPassword(!showPassword)}
-              />
-            </div>
-          </div>
-          <button className="sub-button" type="submit">Register</button>
-          <div className="register-link">
-            <p>Already have an account? <a href onClick={showLoginPage}>Login</a></p>
-          </div>
-        </form>
-      )}
-      <ModalAlertApp 
-          show={showAlert} 
-          handleClose={handleCloseAlert} 
-          title={alertTitle} 
-          message={alertMessage} 
-        />
-    </div>
-  );
-}
+//       {!isLoginPage && !isLoggedIn && (
+//         <form onSubmit={handleRegister}>
+//           <div className="headerapp">
+//             <div className="textapp">Register</div>
+//           </div>
+//           <div className="inputs">
+//             <div className="input">
+//               <img src={email_icon} alt="" />
+//               <input
+//                 type="email"
+//                 placeholder="E-mail"
+//                 required
+//                 value={email}
+//                 onChange={e => setEmail(e.target.value)}
+//               />
+//             </div>
+//             <div className="input">
+//               <img src={user_icon} alt="" />
+//               <input
+//                 type="text"
+//                 placeholder="Username"
+//                 required
+//                 value={username}
+//                 onChange={e => setUsername(e.target.value)}
+//               />
+//             </div>
+//             <div className="input">
+//               <img src={password_icon} alt="" />
+//               <input
+//                 type={showPassword ? "text" : "password"}
+//                 placeholder="Password"
+//                 required
+//                 value={password}
+//                 onChange={e => setPassword(e.target.value)}
+//               />
+//               <i
+//                 className={`fas fa-eye${showPassword ? '' : '-slash'}`}
+//                 style={{
+//                   marginLeft: '8px',
+//                   cursor: 'pointer',
+//                   color: 'grey'
+//                 }}
+//                 onClick={() => setShowPassword(!showPassword)}
+//               />
+//             </div>
+//           </div>
+//           <button className="sub-button" type="submit">Register</button>
+//           <div className="register-link">
+//             <p>Already have an account? <a href onClick={showLoginPage}>Login</a></p>
+//           </div>
+//         </form>
+//       )}
+//       <ModalAlertApp 
+//           show={showAlert} 
+//           handleClose={handleCloseAlert} 
+//           title={alertTitle} 
+//           message={alertMessage} 
+//         />
+//     </div>
+//   );
+// }
 
-function Main() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+// function Main() {
+//   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
+//   const handleLogin = () => {
+//     setIsLoggedIn(true);
+//   };
 
-  return isLoggedIn ? <App /> : <LoginPage onLogin={handleLogin} />;
-}
+//   return isLoggedIn ? <App /> : <LoginPage onLogin={handleLogin} />;
+// }
 
 
-export default Main;
+export default App;
