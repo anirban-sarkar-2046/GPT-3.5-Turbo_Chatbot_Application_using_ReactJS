@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './firebase';
+import './LoginPage.css';
 import ModalAlertApp from './ModalAlertApp';
 import user_icon from './person.png';
 import email_icon from './email.png';
