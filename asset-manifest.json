@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS/static/css/main.7d701c68.css",
-    "main.js": "/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS/static/js/main.f21fc19a.js",
+    "main.css": "/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS/static/css/main.d4e1b7a9.css",
+    "main.js": "/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS/static/js/main.0760b469.js",
     "static/js/453.6070dfb6.chunk.js": "/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS/static/js/453.6070dfb6.chunk.js",
     "static/media/send.svg": "/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS/static/media/send.5cc05986cf306ae5d4ce38bf6fdc3def.svg",
     "index.html": "/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS/index.html",
-    "main.7d701c68.css.map": "/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS/static/css/main.7d701c68.css.map",
-    "main.f21fc19a.js.map": "/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS/static/js/main.f21fc19a.js.map",
+    "main.d4e1b7a9.css.map": "/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS/static/css/main.d4e1b7a9.css.map",
+    "main.0760b469.js.map": "/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS/static/js/main.0760b469.js.map",
     "453.6070dfb6.chunk.js.map": "/GPT-3.5-Turbo_Chatbot_Application_using_ReactJS/static/js/453.6070dfb6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7d701c68.css",
-    "static/js/main.f21fc19a.js"
+    "static/css/main.d4e1b7a9.css",
+    "static/js/main.0760b469.js"
   ]
 }
